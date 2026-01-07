@@ -35,10 +35,6 @@ Both team members contributed roughly equally to the project development.
 - Creates different types of products (`Book`, `Electronics`, `Clothing`) without specifying the exact class in the client code.  
 - Usage: `ProductFactory.create_product(type, name, price)` returns the correct product instance.
 
-**Optional:**  
-**c) Prototype (optional enhancement)**  
-- Enables **copying shopping carts or products** for quick checkout or cloning promotions.
-
 ---
 
 ### 2. Structural Patterns
