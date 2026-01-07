@@ -31,65 +31,66 @@ SDE-program-eShop/
 
 │ &emsp; └── com/
 
-│   └── eshop/
+│ &emsp; └── eshop/
 
-│   ├── Main.java
+│ &emsp; ├── Main.java
 
 │
 
 │ ├── store/
 
-│   │ └── StoreManager.java
+│ &emsp; │ └── StoreManager.java
 
 │
+
 │ ├── product/
 
-│   │ ├── Product.java
+│ &emsp; │ ├── Product.java
 
-│   │ ├── Book.java
+│ &emsp; │ ├── Book.java
 
-│   │ ├── Electronics.java
+│ &emsp; │ ├── Electronics.java
 
-│   │ ├── Clothing.java
+│ &emsp; │ ├── Clothing.java
 
-│   │ ├── ProductFactory.java
+│ &emsp; │ ├── ProductFactory.java
 
-│   │ └── StockObserver.java
+│ &emsp; │ └── StockObserver.java
 
 │
 │ ├── user/
 
-│   │ └── User.java
+│ &emsp; │ └── User.java
 
 │
 │ ├── cart/
 
-│   │ ├── CartComponent.java
+│ &emsp; │ ├── CartComponent.java
 
-│   │ ├── CartItem.java
+│ &emsp; │ ├── CartItem.java
 
-│   │ └── ShoppingCart.java
+│ &emsp; │ └── ShoppingCart.java
 
 │
 
 │ ├── decorator/
 
-│   │ ├── ProductDecorator.java
+│ &emsp; │ ├── ProductDecorator.java
 
-│   │ ├── GiftWrapDecorator.java
+│ &emsp; │ ├── GiftWrapDecorator.java
 
-│   │ └── DiscountDecorator.java
+│ &emsp; │ └── DiscountDecorator.java
 
 │
 │ └── command/
 
-│   ├── Command.java
+│ &emsp; ├── Command.java
 
-│   ├── AddToCartCommand.java
+│ &emsp; ├── AddToCartCommand.java
 
-│   ├── RemoveFromCartCommand.java
+│ &emsp; ├── RemoveFromCartCommand.java
 
-│   └── CheckoutCommand.java
+│ &emsp; └── CheckoutCommand.java
 
 │
 
