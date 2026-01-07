@@ -98,9 +98,9 @@ SDE-program-eShop/
 
 
 ### Structure Rationale
-The project uses a **simple and intentional package structure** suitable for a small weekly assignment. All source code is located under `src/`, and the base package `com.eshop` follows standard Java naming conventions while avoiding the default package.
+The project uses a **simple and intentional package structure** . All source code is located under `src/`, and the base package `com.eshop` follows standard Java naming conventions while avoiding the default package.
 
-Subpackages are organized by **responsibility and design pattern**, making it easy to identify where each pattern is implemented. This improves readability for both team members and graders and directly reflects the architectural decisions described in this document.
+Subpackages are organized by **responsibility and design pattern**, making it easy to identify where each pattern is implemented. This improves readability and directly reflects the architectural decisions described in this document.
 
 The commonly used `src/main/java` structure was intentionally not used. The project does not rely on build tools such as Maven or Gradle and does not include separate test or resource directories. Omitting unnecessary directory levels keeps the project lightweight and easier to navigate without sacrificing proper organization.
 
