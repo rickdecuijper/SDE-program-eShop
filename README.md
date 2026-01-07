@@ -23,3 +23,95 @@ Both team members contributed roughly equally to the project development.
 
 ## Project Structure
 
+SDE-program-eShop/
+│
+├── src/
+│ └── com/
+│ └── eshop/
+│ ├── Main.java
+│
+│ ├── store/
+│ │ └── StoreManager.java
+│
+│ ├── product/
+│ │ ├── Product.java
+│ │ ├── Book.java
+│ │ ├── Electronics.java
+│ │ ├── Clothing.java
+│ │ ├── ProductFactory.java
+│ │ └── StockObserver.java
+│
+│ ├── user/
+│ │ └── User.java
+│
+│ ├── cart/
+│ │ ├── CartComponent.java
+│ │ ├── CartItem.java
+│ │ └── ShoppingCart.java
+│
+│ ├── decorator/
+│ │ ├── ProductDecorator.java
+│ │ ├── GiftWrapDecorator.java
+│ │ └── DiscountDecorator.java
+│
+│ └── command/
+│ ├── Command.java
+│ ├── AddToCartCommand.java
+│ ├── RemoveFromCartCommand.java
+│ └── CheckoutCommand.java
+│
+├── README.md
+└── .gitignore
+
+
+### Structure Rationale
+The project uses a **simple and intentional package structure** suitable for a small weekly assignment. All source code is located under `src/`, and the base package `com.eshop` follows standard Java naming conventions while avoiding the default package.
+
+Subpackages are organized by **responsibility and design pattern**, making it easy to identify where each pattern is implemented. This improves readability for both team members and graders and directly reflects the architectural decisions described in this document.
+
+The commonly used `src/main/java` structure was intentionally not used. The project does not rely on build tools such as Maven or Gradle and does not include separate test or resource directories. Omitting unnecessary directory levels keeps the project lightweight and easier to navigate without sacrificing proper organization.
+
+---
+
+## Design Patterns Implemented
+
+### 1. Creational Patterns
+
+**Singleton**  
+- Class: `StoreManager`  
+- Ensures that only one instance of the store exists and centralizes access to products, users, and carts.  
+- All store operations are accessed via `StoreManager.getInstance()`.
+
+**Factory Method**  
+- Class: `ProductFactory`  
+- Creates different product types (`Book`, `Electronics`, `Clothing`) without exposing concrete class creation to the client.  
+- Simplifies product creation and supports extensibility.
+
+---
+
+### 2. Structural Patterns
+
+**Composite**  
+- Classes: `ShoppingCart`, `CartItem`  
+- Allows individual products and groups of products to be treated uniformly within the shopping cart.
+
+**Decorator**  
+- Classes: `GiftWrapDecorator`, `DiscountDecorator`  
+- Adds optional behavior to products dynamically without modifying existing product classes.
+
+---
+
+### 3. Behavioral Patterns
+
+**Observer**  
+- Classes: `Product`, `User`  
+- Users can subscribe to product updates and are automatically notified when stock levels change.
+
+**Command**  
+- Classes: `AddToCartCommand`, `RemoveFromCartCommand`, `CheckoutCommand`  
+- Encapsulates user actions as command objects, allowing flexible execution and extension of user operations.
+
+---
+
+## Summary
+This project demonstrates the practical application of multiple design patterns in a cohesive and well-structured Java application. The chosen structure prioritizes clarity, maintainability, and academic suitability while remaining flexible for future extensions.
