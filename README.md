@@ -29,67 +29,67 @@ SDE-program-eShop/
 
 ├── src/
 
-│ └── com/
+│   └── com/
 
-│ └── eshop/
+│   └── eshop/
 
-│ ├── Main.java
+│   ├── Main.java
 
 │
 
 │ ├── store/
 
-│ │ └── StoreManager.java
+│   │ └── StoreManager.java
 
 │
 │ ├── product/
 
-│ │ ├── Product.java
+│   │ ├── Product.java
 
-│ │ ├── Book.java
+│   │ ├── Book.java
 
-│ │ ├── Electronics.java
+│   │ ├── Electronics.java
 
-│ │ ├── Clothing.java
+│   │ ├── Clothing.java
 
-│ │ ├── ProductFactory.java
+│   │ ├── ProductFactory.java
 
-│ │ └── StockObserver.java
+│   │ └── StockObserver.java
 
 │
 │ ├── user/
 
-│ │ └── User.java
+│   │ └── User.java
 
 │
 │ ├── cart/
 
-│ │ ├── CartComponent.java
+│   │ ├── CartComponent.java
 
-│ │ ├── CartItem.java
+│   │ ├── CartItem.java
 
-│ │ └── ShoppingCart.java
+│   │ └── ShoppingCart.java
 
 │
 
 │ ├── decorator/
 
-│ │ ├── ProductDecorator.java
+│   │ ├── ProductDecorator.java
 
-│ │ ├── GiftWrapDecorator.java
+│   │ ├── GiftWrapDecorator.java
 
-│ │ └── DiscountDecorator.java
+│   │ └── DiscountDecorator.java
 
 │
 │ └── command/
 
-│ ├── Command.java
+│   ├── Command.java
 
-│ ├── AddToCartCommand.java
+│   ├── AddToCartCommand.java
 
-│ ├── RemoveFromCartCommand.java
+│   ├── RemoveFromCartCommand.java
 
-│ └── CheckoutCommand.java
+│   └── CheckoutCommand.java
 
 │
 
