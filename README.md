@@ -24,6 +24,7 @@ Both team members contributed roughly equally to the project development.
 ## Project Structure
 
 SDE-program-eShop/
+
 │
 
 ├── src/
