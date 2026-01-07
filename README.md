@@ -31,15 +31,15 @@ SDE-program-eShop/
 
 │ &emsp; └── com/
 
-│ &emsp; └── eshop/
+│ &emsp;&emsp; └── eshop/
 
-│ &emsp; ├── Main.java
+│ &emsp;&emsp;&emsp;├── Main.java
 
 │
 
-│ ├── store/
+│ &emsp;&emsp;&emsp; ├── store/
 
-│ &emsp; │ └── StoreManager.java
+│ &emsp;&emsp;&emsp;&emsp; │ └── StoreManager.java
 
 │
 
