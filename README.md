@@ -29,11 +29,11 @@ SDE-program-eShop/
 
 ├── src/
 
-│ &emsp; └── com/
+│ &emsp; ├── com/
 
-│ &emsp;&emsp; └── eshop/
+│ &emsp;&emsp; ├── eshop/
 
-│ &emsp;&emsp;&emsp;├── Main.java
+│ &emsp;&emsp;&emsp; ├── Main.java
 
 │
 
@@ -43,54 +43,54 @@ SDE-program-eShop/
 
 │
 
-│ ├── product/
+│ &emsp;&emsp;&emsp; ├── product/
 
-│ &emsp; │ ├── Product.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Product.java
 
-│ &emsp; │ ├── Book.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Book.java
 
-│ &emsp; │ ├── Electronics.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Electronics.java
 
-│ &emsp; │ ├── Clothing.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Clothing.java
 
-│ &emsp; │ ├── ProductFactory.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── ProductFactory.java
 
-│ &emsp; │ └── StockObserver.java
-
-│
-│ ├── user/
-
-│ &emsp; │ └── User.java
+│ &emsp;&emsp;&emsp;&emsp; │ └── StockObserver.java
 
 │
-│ ├── cart/
+│ &emsp;&emsp;&emsp; ├── user/
 
-│ &emsp; │ ├── CartComponent.java
+│ &emsp;&emsp;&emsp;&emsp; │ └── User.java
 
-│ &emsp; │ ├── CartItem.java
+│
+│ &emsp;&emsp;&emsp; ├── cart/
 
-│ &emsp; │ └── ShoppingCart.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── CartComponent.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── CartItem.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ └── ShoppingCart.java
 
 │
 
-│ ├── decorator/
+│ &emsp;&emsp;&emsp; ├── decorator/
 
-│ &emsp; │ ├── ProductDecorator.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── ProductDecorator.java
 
-│ &emsp; │ ├── GiftWrapDecorator.java
+│ &emsp;&emsp;&emsp;&emsp; │ ├── GiftWrapDecorator.java
 
-│ &emsp; │ └── DiscountDecorator.java
+│ &emsp;&emsp;&emsp;&emsp; │ └── DiscountDecorator.java
 
 │
-│ └── command/
+│ &emsp;&emsp;&emsp; └── command/
 
-│ &emsp; ├── Command.java
+│ &emsp;&emsp;&emsp;&emsp; ├── Command.java
 
-│ &emsp; ├── AddToCartCommand.java
+│ &emsp;&emsp;&emsp;&emsp; ├── AddToCartCommand.java
 
-│ &emsp; ├── RemoveFromCartCommand.java
+│ &emsp;&emsp;&emsp;&emsp; ├── RemoveFromCartCommand.java
 
-│ &emsp; └── CheckoutCommand.java
+│ &emsp;&emsp;&emsp;&emsp; └── CheckoutCommand.java
 
 │
 
