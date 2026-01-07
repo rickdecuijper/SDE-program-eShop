@@ -25,42 +25,75 @@ Both team members contributed roughly equally to the project development.
 
 SDE-program-eShop/
 │
+
 ├── src/
+
 │ └── com/
+
 │ └── eshop/
+
 │ ├── Main.java
+
 │
+
 │ ├── store/
+
 │ │ └── StoreManager.java
+
 │
 │ ├── product/
+
 │ │ ├── Product.java
+
 │ │ ├── Book.java
+
 │ │ ├── Electronics.java
+
 │ │ ├── Clothing.java
+
 │ │ ├── ProductFactory.java
+
 │ │ └── StockObserver.java
+
 │
 │ ├── user/
+
 │ │ └── User.java
+
 │
 │ ├── cart/
+
 │ │ ├── CartComponent.java
+
 │ │ ├── CartItem.java
+
 │ │ └── ShoppingCart.java
+
 │
+
 │ ├── decorator/
+
 │ │ ├── ProductDecorator.java
+
 │ │ ├── GiftWrapDecorator.java
+
 │ │ └── DiscountDecorator.java
+
 │
 │ └── command/
+
 │ ├── Command.java
+
 │ ├── AddToCartCommand.java
+
 │ ├── RemoveFromCartCommand.java
+
 │ └── CheckoutCommand.java
+
 │
+
 ├── README.md
+
 └── .gitignore
 
 
