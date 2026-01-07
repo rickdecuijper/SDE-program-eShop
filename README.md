@@ -6,8 +6,8 @@ online shopping simulator
 This project simulates a simple **online store** where users can browse products, manage shopping carts, and place orders. The program demonstrates multiple **design patterns** across creational, structural, and behavioral categories. It is implemented in **Java** and designed for clarity and modularity.  
 
 **Team Members:**  
-- Rick Example – contributed to Creational patterns, Factory and Singleton  
-- Bart Example – contributed to Structural and Behavioral patterns, Composite, Decorator, Observer, Command  
+- Rick Example – contributed to Creational, Structural and Behavioral patterns, Singleton, Composite and Observer
+- Bart Example – contributed to Creational, Structural and Behavioral patterns, Factory, Decorator and Command  
 
 Both team members contributed roughly equally to the project development.
 
