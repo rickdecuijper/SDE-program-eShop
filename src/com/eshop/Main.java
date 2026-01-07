@@ -4,7 +4,7 @@ import com.eshop.store.StoreManager;
 
 public class Main {
     public static void main(String[] args) {
-        StoreManager store = StoreManager.getInstance();
-        store.start();
+        // Start the store demo via singleton
+        StoreManager.getInstance().start();
     }
 }
