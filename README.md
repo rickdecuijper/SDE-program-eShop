@@ -99,6 +99,8 @@ SDE-program-eShop/
 
 ├── README.md
 
+├── LICENCE
+
 └── .gitignore
 
 
