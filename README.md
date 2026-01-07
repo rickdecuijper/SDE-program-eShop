@@ -1,63 +1,155 @@
-# SDE-program-eShop
-online shopping simulator
-# Online Shop Simulation
+# SDE-program-eShop  
+Online Shopping Simulator
 
 ## Overview
-This project simulates a simple **online store** where users can browse products, manage shopping carts, and place orders. The program demonstrates multiple **design patterns** across creational, structural, and behavioral categories. It is implemented in **Java** and designed for clarity and modularity.  
+This project simulates a simple **online store** where users can browse products, manage shopping carts, and place orders. The program demonstrates multiple **software design patterns** across creational, structural, and behavioral categories. It is implemented in **Java** and designed for clarity and modularity.
 
 **Team Members:**  
-- Rick Example – contributed to Creational patterns, Factory and Singleton  
-- Bart Example – contributed to Structural and Behavioral patterns, Composite, Decorator, Observer, Command  
+- Rick – contributed to creational, structural, and behavioral patterns (Singleton, Composite, Observer)  
+- Bart – contributed to creational, structural, and behavioral patterns (Factory Method, Decorator, Command)  
 
 Both team members contributed roughly equally to the project development.
 
 ---
 
 ## Features
-- Users can browse products by category.
-- Users can add or remove items to/from their shopping cart.
-- Products can have optional features like discounts or gift wrapping.
-- Users receive notifications when product stock changes.
-- Order checkout functionality confirms purchases.
+- Browse products by category  
+- Add and remove items from a shopping cart  
+- Apply optional product features such as discounts or gift wrapping  
+- Receive notifications when product stock changes  
+- Checkout and confirm orders  
+
+---
+
+## Project Structure
+
+SDE-program-eShop/
+
+│
+
+├── src/
+
+│ &emsp; ├── com/
+
+│ &emsp;&emsp; ├── eshop/
+
+│ &emsp;&emsp;&emsp; ├── Main.java
+
+│
+
+│ &emsp;&emsp;&emsp; ├── store/
+
+│ &emsp;&emsp;&emsp;&emsp; │ └── StoreManager.java
+
+│
+
+│ &emsp;&emsp;&emsp; ├── product/
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Product.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Book.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Electronics.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── Clothing.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── ProductFactory.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ └── StockObserver.java
+
+│
+
+│ &emsp;&emsp;&emsp; ├── user/
+
+│ &emsp;&emsp;&emsp;&emsp; │ └── User.java
+
+│
+
+│ &emsp;&emsp;&emsp; ├── cart/
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── CartComponent.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── CartItem.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ └── ShoppingCart.java
+
+│
+
+│ &emsp;&emsp;&emsp; ├── decorator/
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── ProductDecorator.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── GiftWrapDecorator.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ └── DiscountDecorator.java
+
+│
+
+│ &emsp;&emsp;&emsp; └── command/
+
+│ &emsp;&emsp;&emsp;&emsp; ├── Command.java
+
+│ &emsp;&emsp;&emsp;&emsp; ├── AddToCartCommand.java
+
+│ &emsp;&emsp;&emsp;&emsp; ├── RemoveFromCartCommand.java
+
+│ &emsp;&emsp;&emsp;&emsp; └── CheckoutCommand.java
+
+│
+
+├── README.md
+
+└── .gitignore
+
+
+### Structure Rationale
+The project uses a **simple and intentional package structure** . All source code is located under `src/`, and the base package `com.eshop` follows standard Java naming conventions while avoiding the default package.
+
+Subpackages are organized by **responsibility and design pattern**, making it easy to identify where each pattern is implemented. This improves readability and directly reflects the architectural decisions described in this document.
+
+The commonly used `src/main/java` structure was intentionally not used. The project does not rely on build tools such as Maven or Gradle and does not include separate test or resource directories. Omitting unnecessary directory levels keeps the project lightweight and easier to navigate without sacrificing proper organization.
 
 ---
 
 ## Design Patterns Implemented
 
 ### 1. Creational Patterns
-**a) Singleton**  
+
+**Singleton**  
 - Class: `StoreManager`  
-- Ensures that there is only **one instance of the store**, which manages all products and users.  
-- Usage: All product and cart operations go through `StoreManager.get_instance()`.
+- Ensures that only one instance of the store exists and centralizes access to products, users, and carts.  
+- All store operations are accessed via `StoreManager.getInstance()`.
 
-**b) Factory Method**  
+**Factory Method**  
 - Class: `ProductFactory`  
-- Creates different types of products (`Book`, `Electronics`, `Clothing`) without specifying the exact class in the client code.  
-- Usage: `ProductFactory.create_product(type, name, price)` returns the correct product instance.
-
-**Optional:**  
-**c) Prototype (optional enhancement)**  
-- Enables **copying shopping carts or products** for quick checkout or cloning promotions.
+- Creates different product types (`Book`, `Electronics`, `Clothing`) without exposing concrete class creation to the client.  
+- Simplifies product creation and supports extensibility.
 
 ---
 
 ### 2. Structural Patterns
-**a) Composite**  
-- Classes: `ShoppingCart`, `CartItem`  
-- Allows treating individual products and groups of products in the cart **uniformly**.  
-- Example: Cart can contain single items or bundles of items.
 
-**b) Decorator**  
+**Composite**  
+- Classes: `ShoppingCart`, `CartItem`  
+- Allows individual products and groups of products to be treated uniformly within the shopping cart.
+
+**Decorator**  
 - Classes: `GiftWrapDecorator`, `DiscountDecorator`  
-- Dynamically adds features to products, such as gift wrapping or applying discounts, **without modifying the original product class**.  
+- Adds optional behavior to products dynamically without modifying existing product classes.
 
 ---
 
 ### 3. Behavioral Patterns
-**a) Observer**  
-- Classes: `User`, `Product`  
-- Users subscribe to product updates. When product stock changes, **all subscribed users are notified automatically**.  
 
-**b) Command**  
+**Observer**  
+- Classes: `Product`, `User`  
+- Users can subscribe to product updates and are automatically notified when stock levels change.
+
+**Command**  
 - Classes: `AddToCartCommand`, `RemoveFromCartCommand`, `CheckoutCommand`  
-- Encapsulates user actions as objects. Commands can be queued or executed dynamically, allowing **flexible handling of operations**.
+- Encapsulates user actions as command objects, allowing flexible execution and extension of user operations.
+
+---
+
+## Summary
+This project demonstrates the practical application of multiple design patterns in a cohesive and well-structured Java application. The chosen structure prioritizes clarity, maintainability, and academic suitability while remaining flexible for future extensions.
