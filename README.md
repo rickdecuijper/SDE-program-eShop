@@ -58,11 +58,13 @@ SDE-program-eShop/
 │ &emsp;&emsp;&emsp;&emsp; │ └── StockObserver.java
 
 │
+
 │ &emsp;&emsp;&emsp; ├── user/
 
 │ &emsp;&emsp;&emsp;&emsp; │ └── User.java
 
 │
+
 │ &emsp;&emsp;&emsp; ├── cart/
 
 │ &emsp;&emsp;&emsp;&emsp; │ ├── CartComponent.java
@@ -82,6 +84,7 @@ SDE-program-eShop/
 │ &emsp;&emsp;&emsp;&emsp; │ └── DiscountDecorator.java
 
 │
+
 │ &emsp;&emsp;&emsp; └── command/
 
 │ &emsp;&emsp;&emsp;&emsp; ├── Command.java
