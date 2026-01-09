@@ -55,8 +55,6 @@ SDE-program-eShop/
 
 │ &emsp;&emsp;&emsp;&emsp; │ ├── ProductFactory.java
 
-│ &emsp;&emsp;&emsp;&emsp; │ └── StockObserver.java
-
 │
 
 │ &emsp;&emsp;&emsp; ├── user/
