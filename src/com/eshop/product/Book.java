@@ -2,7 +2,7 @@ package com.eshop.product;
 
 public class Book extends Product {
 
-    public Book() {
-        super("Book", 14.99, 200); // name, price, stock
+    public Book(String name, Double price, int stock) {
+        super(name, price, stock); // name, price, stock
     }
 }

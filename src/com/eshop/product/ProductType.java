@@ -9,6 +9,7 @@ package com.eshop.product;
  */
 public enum ProductType {
     BOOK,
-    ELECTRONICS,
-    CLOTHING
+    CLOTHING,
+    LAPTOP,
+    SMARTPHONE,
 }
