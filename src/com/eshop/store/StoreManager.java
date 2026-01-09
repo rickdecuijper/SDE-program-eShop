@@ -2,15 +2,18 @@ package com.eshop.store;
 
 import com.eshop.cart.CartItem;
 import com.eshop.cart.ShoppingCart;
-import com.eshop.command.Command;
-import com.eshop.command.CommandInvoker;
+import com.eshop.decorator.DiscountDecorator;
 import com.eshop.product.Product;
+import com.eshop.product.ProductFactory;
+import com.eshop.product.ProductType;
 import com.eshop.user.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StoreManager {
 
     private static volatile StoreManager instance;
-    private CommandInvoker invoker = new CommandInvoker(); // Command invoker
 
     private StoreManager() {}
 
@@ -25,53 +28,54 @@ public class StoreManager {
         return instance;
     }
 
-    /**
-     * Executes a command through the invoker
-     *
-     * @param command the command to execute
-     */
-    public void executeCommand(Command command) {
-        invoker.executeCommand(command);
-    }
-
-    /**
-     * Start the store demo
-     */
+    // Start the store demo
     public void start() {
         // Create users
         User alice = new User("Alice");
         User bob = new User("Bob");
 
-        // Create products
-        Product laptop = new Product("Laptop", 1200.0, 10);
-        Product phone = new Product("Smartphone", 800.0, 15);
-        Product headphones = new Product("Headphones", 150.0, 20);
+        // Create all products from ProductType enum
+        List<Product> products = new ArrayList<>();
+        for (ProductType type : ProductType.values()) {
+            products.add(ProductFactory.createProduct(type));
+        }
 
-        // Subscribe users to products
+        // Pick items
+        Product laptop = products.get(ProductType.LAPTOP.ordinal());
+        Product book = products.get(ProductType.BOOK.ordinal());
+        Product smartphone = products.get(ProductType.SMARTPHONE.ordinal());
+
+        //  Apply decorator (20% discount on the laptop!)
+        Product discountedLaptop = new DiscountDecorator(laptop, 20);
+
+        // Subscribe users to stock changes
         laptop.subscribe(alice);
         laptop.subscribe(bob);
-        phone.subscribe(bob);
 
-        // Create shopping carts
+        smartphone.subscribe(bob);
+
+        // Alice's cart uses the discounted price
         ShoppingCart cartAlice = new ShoppingCart();
-        cartAlice.addItem(new CartItem("Laptop", laptop.getPrice()));
-        cartAlice.addItem(new CartItem("Headphones", headphones.getPrice()));
+        cartAlice.addItem(new CartItem(discountedLaptop.getName(), discountedLaptop.getPrice()));
+        cartAlice.addItem(new CartItem(book.getName(), book.getPrice()));
 
+        // Bob buys a smartphone
         ShoppingCart cartBob = new ShoppingCart();
-        cartBob.addItem(new CartItem("Smartphone", phone.getPrice()));
+        cartBob.addItem(new CartItem(smartphone.getName(), smartphone.getPrice()));
 
+        // Merge carts into main checkout
         ShoppingCart mainCart = new ShoppingCart();
         mainCart.addItem(cartAlice);
         mainCart.addItem(cartBob);
 
-        // Display carts
+        // Display results
         System.out.println("=== Shopping Carts ===");
         mainCart.display();
-        System.out.println("Total Price: $" + mainCart.getPrice());
+        System.out.printf("Total Price: $%.2f%n", mainCart.getPrice());
 
-        // Update stock to trigger observer notifications
+        // Change stock → triggers observer notifications
         System.out.println("\n=== Updating Stock ===");
         laptop.setStock(5);
-        phone.setStock(0);
+        smartphone.setStock(0);
     }
 }
