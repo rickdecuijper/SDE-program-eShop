@@ -1,7 +1,7 @@
 package com.eshop.command;
 
-import com.eshop.product.Product;
 import com.eshop.cart.Cart;
+import com.eshop.product.Product;
 
 /**
  * Command to remove a product from the cart.

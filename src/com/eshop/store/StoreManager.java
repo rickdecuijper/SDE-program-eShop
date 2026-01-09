@@ -2,12 +2,15 @@ package com.eshop.store;
 
 import com.eshop.cart.CartItem;
 import com.eshop.cart.ShoppingCart;
+import com.eshop.command.Command;
+import com.eshop.command.CommandInvoker;
 import com.eshop.product.Product;
 import com.eshop.user.User;
 
 public class StoreManager {
 
     private static volatile StoreManager instance;
+    private CommandInvoker invoker = new CommandInvoker(); // Command invoker
 
     private StoreManager() {}
 
@@ -22,7 +25,18 @@ public class StoreManager {
         return instance;
     }
 
-    // Start the store demo
+    /**
+     * Executes a command through the invoker
+     *
+     * @param command the command to execute
+     */
+    public void executeCommand(Command command) {
+        invoker.executeCommand(command);
+    }
+
+    /**
+     * Start the store demo
+     */
     public void start() {
         // Create users
         User alice = new User("Alice");
