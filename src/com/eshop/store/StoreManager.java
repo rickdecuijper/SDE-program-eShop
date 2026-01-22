@@ -30,50 +30,50 @@ public class StoreManager {
 
     // Start the store demo
     public void start() {
-        // Create users
+
+        // Create users (Observers)
         User alice = new User("Alice");
         User bob = new User("Bob");
 
-        // Create all products from ProductType enum
+        // Create all products using Factory Method
         List<Product> products = new ArrayList<>();
         for (ProductType type : ProductType.values()) {
             products.add(ProductFactory.createProduct(type));
         }
 
-        // Pick items
+        // Select products
         Product laptop = products.get(ProductType.LAPTOP.ordinal());
         Product book = products.get(ProductType.BOOK.ordinal());
         Product smartphone = products.get(ProductType.SMARTPHONE.ordinal());
 
-        //  Apply decorator (20% discount on the laptop!)
+        // Apply Decorator (20% discount on laptop)
         Product discountedLaptop = new DiscountDecorator(laptop, 20);
 
-        // Subscribe users to stock changes
+        // Subscribe users to stock updates (Observer pattern)
         laptop.subscribe(alice);
         laptop.subscribe(bob);
-
         smartphone.subscribe(bob);
 
-        // Alice's cart uses the discounted price
+        // Alice's shopping cart
         ShoppingCart cartAlice = new ShoppingCart();
         cartAlice.addItem(new CartItem(discountedLaptop.getName(), discountedLaptop.getPrice()));
         cartAlice.addItem(new CartItem(book.getName(), book.getPrice()));
 
-        // Bob buys a smartphone
+        // Bob's shopping cart
         ShoppingCart cartBob = new ShoppingCart();
         cartBob.addItem(new CartItem(smartphone.getName(), smartphone.getPrice()));
 
-        // Merge carts into main checkout
+        // Combine carts using Composite pattern
         ShoppingCart mainCart = new ShoppingCart();
         mainCart.addItem(cartAlice);
         mainCart.addItem(cartBob);
 
-        // Display results
+        // Display cart contents
         System.out.println("=== Shopping Carts ===");
         mainCart.display();
         System.out.printf("Total Price: $%.2f%n", mainCart.getPrice());
 
-        // Change stock → triggers observer notifications
+        // Update stock (triggers Observer notifications)
         System.out.println("\n=== Updating Stock ===");
         laptop.setStock(5);
         smartphone.setStock(0);
