@@ -5,10 +5,14 @@ Online Shopping Simulator
 This project simulates a simple **online store** where users can browse products, manage shopping carts, and place orders. The program demonstrates multiple **software design patterns** across creational, structural, and behavioral categories. It is implemented in **Java** and designed for clarity and modularity.
 
 **Team Members:**  
-- Rick – contributed to creational, structural, and behavioral patterns (Singleton, Composite, Observer)  
-- Bart – contributed to creational, structural, and behavioral patterns (Factory Method, Decorator, Command)  
+- Rick de Cuijper – contributed to creational, structural, and behavioral patterns (Singleton, Composite, Observer)  
+- Bart Geijtenbeek – contributed to creational, structural, and behavioral patterns (Factory Method, Decorator, Command)  
 
 Both team members contributed roughly equally to the project development.
+
+## Repository
+
+Link naar de Repo: https://github.com/rickdecuijper/SDE-program-eShop/
 
 ---
 
@@ -54,6 +58,8 @@ SDE-program-eShop/
 │ &emsp;&emsp;&emsp;&emsp; │ ├── Clothing.java
 
 │ &emsp;&emsp;&emsp;&emsp; │ ├── ProductFactory.java
+
+│ &emsp;&emsp;&emsp;&emsp; │ ├── StackObserver.java
 
 │
 
@@ -142,7 +148,7 @@ The commonly used `src/main/java` structure was intentionally not used. The proj
 ### 3. Behavioral Patterns
 
 **Observer**  
-- Classes: `Product`, `User`  
+- Classes: `Product`, `User`, `StockObsever`
 - Users can subscribe to product updates and are automatically notified when stock levels change.
 
 **Command**  
