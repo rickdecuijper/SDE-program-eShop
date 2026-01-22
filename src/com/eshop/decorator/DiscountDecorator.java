@@ -1,6 +1,6 @@
 package com.eshop.decorator;
 
-import com.eshop.product.Product;
+import com.eshop.product.Products;
 
 /**
  * Applies a percentage discount to the product price.
@@ -9,7 +9,7 @@ public class DiscountDecorator extends ProductDecorator {
 
     private final double discountPercent;
 
-    public DiscountDecorator(Product product, double discountPercent) {
+    public DiscountDecorator(Products product, double discountPercent) {
         super(product);
         this.discountPercent = discountPercent;
     }

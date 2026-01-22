@@ -5,14 +5,14 @@ import com.eshop.user.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book implements Products {
+public class Laptop implements Products {
 
     private final String name;
     private final double price;
     private int stock;
     private final List<User> subscribers = new ArrayList<>();
 
-    public Book(String name, double price, int stock) {
+    public Laptop(String name, double price, int stock) {
         this.name = name;
         this.price = price;
         this.stock = stock;

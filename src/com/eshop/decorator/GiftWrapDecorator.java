@@ -1,6 +1,6 @@
 package com.eshop.decorator;
 
-import com.eshop.product.Product;
+import com.eshop.product.Products;
 
 /**
  * Adds a fixed gift-wrapping fee to the product.
@@ -9,7 +9,7 @@ public class GiftWrapDecorator extends ProductDecorator {
 
     private static final double WRAP_FEE = 2.50;
 
-    public GiftWrapDecorator(Product product) {
+    public GiftWrapDecorator(Products product) {
         super(product);
     }
 

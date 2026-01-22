@@ -1,17 +1,17 @@
 package com.eshop.decorator;
 
-import com.eshop.product.Product;
+import com.eshop.product.Products;
+import com.eshop.user.User;
 
 /**
- * Base Decorator class extending Product.
- * Wraps another Product and delegates behavior.
+ * Base decorator for Products.
+ * Implements Products so decorators are interchangeable with products.
  */
-public abstract class ProductDecorator extends Product {
+public abstract class ProductDecorator implements Products {
 
-    protected Product wrappedProduct;
+    protected final Products wrappedProduct;
 
-    public ProductDecorator(Product product) {
-        super(product.getName(), product.getPrice(), product.getStock());
+    protected ProductDecorator(Products product) {
         this.wrappedProduct = product;
     }
 
@@ -28,5 +28,20 @@ public abstract class ProductDecorator extends Product {
     @Override
     public int getStock() {
         return wrappedProduct.getStock();
+    }
+
+    @Override
+    public void setStock(int stock) {
+        wrappedProduct.setStock(stock);
+    }
+
+    @Override
+    public void subscribe(User user) {
+        wrappedProduct.subscribe(user);
+    }
+
+    @Override
+    public void unsubscribe(User user) {
+        wrappedProduct.unsubscribe(user);
     }
 }

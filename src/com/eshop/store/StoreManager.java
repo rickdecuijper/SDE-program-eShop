@@ -3,12 +3,13 @@ package com.eshop.store;
 import com.eshop.cart.CartItem;
 import com.eshop.cart.ShoppingCart;
 import com.eshop.decorator.DiscountDecorator;
-import com.eshop.product.Product;
+import com.eshop.product.Products;
 import com.eshop.product.ProductFactory;
-import com.eshop.product.ProductType;
+import com.eshop.product.BookFactory;
+import com.eshop.product.LaptopFactory;
+import com.eshop.product.SmartphoneFactory;
 import com.eshop.user.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class StoreManager {
@@ -30,36 +31,52 @@ public class StoreManager {
 
     // Start the store demo
     public void start() {
+
         // Create users
         User alice = new User("Alice");
         User bob = new User("Bob");
 
-        // Create all products from ProductType enum
-        List<Product> products = new ArrayList<>();
-        for (ProductType type : ProductType.values()) {
-            products.add(ProductFactory.createProduct(type));
-        }
+        // Create factories (Factory Method pattern)
+        ProductFactory bookFactory = new BookFactory();
+        ProductFactory laptopFactory = new LaptopFactory();
+        ProductFactory smartphoneFactory = new SmartphoneFactory();
 
-        // Pick items
-        Product laptop = products.get(ProductType.LAPTOP.ordinal());
-        Product book = products.get(ProductType.BOOK.ordinal());
-        Product smartphone = products.get(ProductType.SMARTPHONE.ordinal());
+        // Create products using factories
+        Products book = bookFactory.createProduct(
+                "Clean Code",
+                39.99,
+                20
+        );
 
-        //  Apply decorator (20% discount on the laptop!)
-        Product discountedLaptop = new DiscountDecorator(laptop, 20);
+        Products laptop = laptopFactory.createProduct(
+                "ThinkPad X1",
+                1499.99,
+                5
+        );
 
-        // Subscribe users to stock changes
+        Products smartphone = smartphoneFactory.createProduct(
+                "Galaxy S22",
+                899.99,
+                10
+        );
+
+        // Optional: store all products in a list
+        List<Products> products = List.of(book, laptop, smartphone);
+
+        // Apply decorator (20% discount on the laptop)
+        Products discountedLaptop = new DiscountDecorator(laptop, 20);
+
+        // Subscribe users to stock changes (Observer pattern)
         laptop.subscribe(alice);
         laptop.subscribe(bob);
-
         smartphone.subscribe(bob);
 
-        // Alice's cart uses the discounted price
+        // Alice's cart
         ShoppingCart cartAlice = new ShoppingCart();
         cartAlice.addItem(new CartItem(discountedLaptop.getName(), discountedLaptop.getPrice()));
         cartAlice.addItem(new CartItem(book.getName(), book.getPrice()));
 
-        // Bob buys a smartphone
+        // Bob's cart
         ShoppingCart cartBob = new ShoppingCart();
         cartBob.addItem(new CartItem(smartphone.getName(), smartphone.getPrice()));
 
@@ -73,7 +90,7 @@ public class StoreManager {
         mainCart.display();
         System.out.printf("Total Price: $%.2f%n", mainCart.getPrice());
 
-        // Change stock → triggers observer notifications
+        // Update stock (triggers observer notifications)
         System.out.println("\n=== Updating Stock ===");
         laptop.setStock(5);
         smartphone.setStock(0);
