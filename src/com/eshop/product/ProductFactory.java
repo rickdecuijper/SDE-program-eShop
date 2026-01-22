@@ -1,14 +1,26 @@
 package com.eshop.product;
 
-public class ProductFactory {
+public abstract class ProductFactory {
+    public abstract Product createProduct(String name, double price, int stock);
 
-    public static Product createProduct(ProductType type) {
-        return switch (type) {
-            case BOOK -> new Book("Harry Potter", 19.99, 100);
-            case LAPTOP -> new Electronic("Laptop", 1499.99, 10);
-            case SMARTPHONE -> new Electronic("SmartPhone", 1499.99, 10);
-            case CLOTHING -> new Clothes("T-Shirt", 29.99, 50);
-        };
+    public static class SmartphoneFactory extends ProductFactory {
+        @Override
+        public Product createProduct(String name, double price, int stock) {
+            return new Smartphone(name, price, stock);
+        }
     }
 
+    public static class LaptopFactory extends ProductFactory {
+        @Override
+        public Product createProduct(String name, double price, int stock) {
+            return new Laptop(name, price, stock);
+        }
+    }
+
+    public static class BookFactory extends ProductFactory {
+        @Override
+        public Product createProduct(String name, double price, int stock) {
+            return new Book(name, price, stock);
+        }
+    }
 }

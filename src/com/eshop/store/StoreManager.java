@@ -35,16 +35,15 @@ public class StoreManager {
         User alice = new User("Alice");
         User bob = new User("Bob");
 
-        // Create all products using Factory Method
-        List<Product> products = new ArrayList<>();
-        for (ProductType type : ProductType.values()) {
-            products.add(ProductFactory.createProduct(type));
-        }
+        Product laptop = new ProductFactory.LaptopFactory().createProduct("MacBook", 1999.99, 5);
+        Product book = new ProductFactory.BookFactory().createProduct("Java Book", 49.99, 20);
+        Product smartphone = new ProductFactory.SmartphoneFactory().createProduct("Pixel", 799.99, 10);
 
-        // Select products
-        Product laptop = products.get(ProductType.LAPTOP.ordinal());
-        Product book = products.get(ProductType.BOOK.ordinal());
-        Product smartphone = products.get(ProductType.SMARTPHONE.ordinal());
+        // Add them to the list in the same order as your enum
+        List<Product> products = new ArrayList<>();
+        products.add(laptop);       // index 0 -> LAPTOP
+        products.add(book);         // index 1 -> BOOK
+        products.add(smartphone);   // index 2 -> SMARTPHONE
 
         // Apply Decorator (20% discount on laptop)
         Product discountedLaptop = new DiscountDecorator(laptop, 20);
