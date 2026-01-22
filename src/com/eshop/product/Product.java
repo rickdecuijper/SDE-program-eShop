@@ -1,6 +1,5 @@
 package com.eshop.product;
 
-import com.eshop.user.User;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,8 +8,8 @@ public class Product {
     private double price;
     private int stock;
 
-    // Observer list
-    private List<User> subscribers = new ArrayList<>();
+    // Observer list (interface, not User)
+    private List<StockObserver> subscribers = new ArrayList<>();
 
     public Product(String name, double price, int stock) {
         this.name = name;
@@ -18,29 +17,29 @@ public class Product {
         this.stock = stock;
     }
 
-    // Subscribe a user
-    public void subscribe(User user) {
-        if (!subscribers.contains(user)) {
-            subscribers.add(user);
+    // Subscribe observer
+    public void subscribe(StockObserver observer) {
+        if (!subscribers.contains(observer)) {
+            subscribers.add(observer);
         }
     }
 
-    // Unsubscribe a user
-    public void unsubscribe(User user) {
-        subscribers.remove(user);
+    // Unsubscribe observer
+    public void unsubscribe(StockObserver observer) {
+        subscribers.remove(observer);
     }
 
-    // Notify all subscribers
-    private void notifyUsers() {
-        for (User user : subscribers) {
-            user.update(name, stock);
+    // Notify all observers
+    private void notifyObservers() {
+        for (StockObserver observer : subscribers) {
+            observer.update(name, stock);
         }
     }
 
-    // Change stock and notify subscribers
+    // Change stock and notify observers
     public void setStock(int stock) {
         this.stock = stock;
-        notifyUsers();
+        notifyObservers();
     }
 
     public String getName() {
