@@ -148,7 +148,7 @@ The commonly used `src/main/java` structure was intentionally not used. The proj
 ### 3. Behavioral Patterns
 
 **Observer**  
-- Classes: `Product`, `User`  
+- Classes: `Product`, `User`, `StockObsever`
 - Users can subscribe to product updates and are automatically notified when stock levels change.
 
 **Command**  
