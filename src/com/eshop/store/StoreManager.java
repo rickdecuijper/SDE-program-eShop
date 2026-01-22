@@ -2,6 +2,9 @@ package com.eshop.store;
 
 import com.eshop.cart.CartItem;
 import com.eshop.cart.ShoppingCart;
+import com.eshop.command.AddToCartCommand;
+import com.eshop.command.CheckoutCommand;
+import com.eshop.command.Command;
 import com.eshop.decorator.DiscountDecorator;
 import com.eshop.product.Product;
 import com.eshop.product.ProductFactory;
@@ -35,9 +38,11 @@ public class StoreManager {
         User alice = new User("Alice");
         User bob = new User("Bob");
 
+
         Product laptop = new ProductFactory.LaptopFactory().createProduct("MacBook", 1999.99, 5);
         Product book = new ProductFactory.BookFactory().createProduct("Java Book", 49.99, 20);
         Product smartphone = new ProductFactory.SmartphoneFactory().createProduct("Pixel", 799.99, 10);
+
 
         // Add them to the list in the same order as your enum
         List<Product> products = new ArrayList<>();
@@ -45,34 +50,52 @@ public class StoreManager {
         products.add(book);         // index 1 -> BOOK
         products.add(smartphone);   // index 2 -> SMARTPHONE
 
-        // Apply Decorator (20% discount on laptop)
+        // Apply Decorator (20% discount)
         Product discountedLaptop = new DiscountDecorator(laptop, 20);
 
-        // Subscribe users to stock updates (Observer pattern)
+        // Subscribe users (Observer pattern)
         laptop.subscribe(alice);
         laptop.subscribe(bob);
         smartphone.subscribe(bob);
 
-        // Alice's shopping cart
+        // Alice's cart
         ShoppingCart cartAlice = new ShoppingCart();
-        cartAlice.addItem(new CartItem(discountedLaptop.getName(), discountedLaptop.getPrice()));
-        cartAlice.addItem(new CartItem(book.getName(), book.getPrice()));
 
-        // Bob's shopping cart
+        Command addLaptopToAlice =
+                new AddToCartCommand(cartAlice,
+                        new CartItem(discountedLaptop.getName(), discountedLaptop.getPrice()));
+
+        Command addBookToAlice =
+                new AddToCartCommand(cartAlice,
+                        new CartItem(book.getName(), book.getPrice()));
+
+        addLaptopToAlice.execute();
+        addBookToAlice.execute();
+
+        // Bob's cart
         ShoppingCart cartBob = new ShoppingCart();
-        cartBob.addItem(new CartItem(smartphone.getName(), smartphone.getPrice()));
 
-        // Combine carts using Composite pattern
+        Command addPhoneToBob =
+                new AddToCartCommand(cartBob,
+                        new CartItem(smartphone.getName(), smartphone.getPrice()));
+
+        addPhoneToBob.execute();
+
+        // Combine carts (Composite)
         ShoppingCart mainCart = new ShoppingCart();
         mainCart.addItem(cartAlice);
         mainCart.addItem(cartBob);
 
-        // Display cart contents
+        // Display carts
         System.out.println("=== Shopping Carts ===");
         mainCart.display();
         System.out.printf("Total Price: $%.2f%n", mainCart.getPrice());
 
-        // Update stock (triggers Observer notifications)
+        // Checkout using Command pattern
+        Command checkout = new CheckoutCommand(mainCart);
+        checkout.execute();
+
+        // Update stock (Observer notifications)
         System.out.println("\n=== Updating Stock ===");
         laptop.setStock(5);
         smartphone.setStock(0);
